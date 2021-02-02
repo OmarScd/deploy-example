@@ -27,7 +27,6 @@ workflows:
   install_and_configure_cli:
     jobs:
       - gcp-cli/install_and_initialize_cli:
-          context: myContext
           executor: gcp-cli/default
   deploy_to_gcp:
     jobs:
