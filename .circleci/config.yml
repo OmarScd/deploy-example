@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  gcp-cli: circleci/gcp-cli@2.1.0
 jobs:
   deploy:
     docker:
@@ -10,8 +8,8 @@ jobs:
       - checkout
       - run: chmod +x ./app.yaml.sh
       - run:
-          name: Copy across app.yml config
-          command: ./app.yaml.sh > ./app.yaml
+         name: Copy across app.yaml config
+         command: ./app.yaml.sh > ./app.yaml
       - run:
           name: Set up gcloud config
           command: |
@@ -20,14 +18,9 @@ jobs:
       - run: cat ./app.yaml
       - run:
           name: Deploying to App Engine
-          command: gloud app deploy app.yaml
- 
+          command: gcloud app deploy app.yaml
 workflows:
   version: 2
-  install_and_configure_cli:
-    jobs:
-      - gcp-cli/install_and_initialize_cli:
-          executor: gcp-cli/default
-  deploy_to_gcp:
+  deploy_en_GCP:
     jobs:
       - deploy
